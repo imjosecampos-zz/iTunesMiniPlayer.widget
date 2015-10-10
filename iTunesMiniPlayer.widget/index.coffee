@@ -48,6 +48,7 @@ style: """
         width: 100%
         height: 72px
         text-align:center
+        overflow:hidden
     #content p
         width:1000px
         left: 50%;
