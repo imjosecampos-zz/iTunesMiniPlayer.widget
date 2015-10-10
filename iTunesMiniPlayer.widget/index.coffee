@@ -1,28 +1,5 @@
-# Version: 0.83a
-## If you do not want a transparent widget, please adjust the opacity setting under STYLE
-## If you do not know how to write HTML/CSS, it is best for you to learn it first before
-## attempting to customise the UI. Or you can contact me.
-## Any advise or new idea is welcome. Do not hesitate to contact me, my email is: jetic@me.com
-# Refreshing Frequency is set to once every 1000ms
+# Version: 0.0.2
 refreshFrequency: 1000
-# Information on cells
-## Cells consists of three parts. A main body(nav), a top and a bottom(s and b). Cells are rotated
-## 90 degrees to the current position. For special cells (Battery cell, iTunes cell), the toppings
-## and bottoms are slightly different, for example s1, s2, b1, b2, these are modified to cover
-## the gaps between the originally seperated cells. Almost all the elements in the cells are
-## positioned manually, this is to ensure that the UI looks exactly the same on different
-## environments. Übersicht is using the safari engine to render the widgets, therefore the UI under
-## different versions of Safari could be different, if so please contact me and I'll fix this. There
-## are also classes like a0, a1, a2, a3, a4, these act as collective cell controlls allowing me to
-## change the output of all related cells when necessary. ai cells are initially hidden; a1 and a2
-## are used to adjust the lines so that the cells won't crash into each other; a3 is the battery
-## cell; a4 is the console output cell; ax hasn't been used. Contents in the cells can use the
-## classes content of bigger text or contents for smaller text, although most of the time it might
-## be better to adjust the font-size manually. It is obvious that some of the cells are hidden(ai),
-## these can be easily modified to display new contents as you like. I will personally add more to
-## this widget as well. Please look out for my updates and if you've done something amazing with
-## your copy of this widget and want me to add, please contact me.
-##
 style: """
     position:absolute
     margin:0px
@@ -117,16 +94,7 @@ afterRender: (domEl) ->
     $(domEl).on 'click', '#iTunesPlay', => @run "osascript -e 'tell application \"iTunes\" to play'"
 
 update: (output, domEl) ->
-    iTunesvalues    = output.split('~')
-    update     = false
-    
-    #console.log output
-    
-    if $(domEl).find('#iTunesTitle').text() == iTunesvalues[0]
-        return
-        
-    $(domEl).find('#iTunesArtist').text("#{iTunesvalues[1]}")
-    $(domEl).find('#iTunesTitle').text("#{iTunesvalues[0]}")
+    iTunesvalues = output.split('~')
     
     if iTunesvalues[3] == 'playing'
         $(domEl).find("#iTunesPlay").hide()
@@ -134,6 +102,12 @@ update: (output, domEl) ->
     else
         $(domEl).find("#iTunesPause").hide()
         $(domEl).find("#iTunesPlay").show()
+    
+    if $(domEl).find('#iTunesTitle').text() == iTunesvalues[0]
+        return
+        
+    $(domEl).find('#iTunesArtist').text("#{iTunesvalues[1]}")
+    $(domEl).find('#iTunesTitle').text("#{iTunesvalues[0]}")
         
     if iTunesvalues[0] != " " && iTunesvalues[1] != " "
         html = "<img src='iTunesMiniPlayer.widget/images/albumart.jpg'>"
