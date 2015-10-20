@@ -26,6 +26,7 @@ style: """
         height: 72px
         text-align:center
         overflow:hidden
+        border-top: 1px solid #FFF
     #content p
         width:1000px
         left: 50%;
@@ -114,4 +115,4 @@ update: (output, domEl) ->
         $(domEl).find('#cover').html("")
         $(domEl).find('#cover').html(html)
     else
-        $(domEl).find('#cover').html("")
+        $(domEl).find('#cover').html("<img src='iTunesMiniPlayer.widget/images/default.png'>")
