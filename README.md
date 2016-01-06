@@ -1,4 +1,4 @@
-# iTunesMiniPlayer.widget
+# iTunesMiniPlayer.widget (not supported anymore)
 A widget for [Übersicht](http://tracesof.net/uebersicht/) that let's you see the cover of the song you are listening to, play the next and previous song, and play/pause your music.
 
 To change the position open index.coffee with a text editor and change the lines 6 and 7:
